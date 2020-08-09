@@ -15,18 +15,12 @@ def get(request, path_id):
     if request.method == 'GET':
         try:
             path_id = str(path_id)
-            entry_id = path_id[-2:]
-            path_id = int(path_id[:-2])
+            entry_id = path_id[5:]
+            path_id = int(path_id[:5])
             print(entry_id, path_id)
             entry = Entry.objects.get(entry_id=entry_id)
             print(entry.link)
             return redirect(entry.link)
-            # if (entry.link.startswith("http://") or entry.link.startswith("https://")):
-            #     print("h2: "+entry.link)
-            #     # return redirect(url)
-            # else:
-            #     print("h1 http://"+entry.link)
-            #     # return redirect("http://"+url)
             return JsonResponse({
                 'status_code': 404,
                 'error': 'The resource was not found'
