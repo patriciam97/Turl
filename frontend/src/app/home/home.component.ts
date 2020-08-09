@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
             this.short = res['url'];
             this.empty = null;
             this.invalid = null;
+            this.link = null;
           }
         });
       } else {
