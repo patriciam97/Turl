@@ -1,0 +1,27 @@
+<div class="card mx-auto" style="width: fit-content;">
+  <div class="card-body bg-light">
+    <h5 class="card-title">
+      Sick of having to deal with long links?
+    </h5>
+    <p class="card-text">
+      Enter your long url below and click "Convert" to convert it into a shorter
+      one that you can easily share with other people.
+    </p>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">
+          <fa-icon [icon]="faGlobeEurope"></fa-icon>
+        </span>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Place your long url here.."
+        aria-label="Place your long url here.."
+        [value]="link"
+        (input)="link = $event.target.value"
+      />
+    </div>
+    <a class="btn btn-primary" (click)="convert()">Convert</a>
+  </div>
+</div>

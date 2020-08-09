@@ -1,5 +1,6 @@
 .nav {
   background-color: #c2f9bb;
+  height: 80px;
 }
 
 .appName {
@@ -7,4 +8,11 @@
   font-size: xx-large;
   padding: 20px 50px;
   letter-spacing: 3px;
+}
+.container-fluid {
+  background-color: #20063b;
+  height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
