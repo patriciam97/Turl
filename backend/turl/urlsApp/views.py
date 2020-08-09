@@ -14,8 +14,11 @@ def index(request):
 def get(request, path_id):
     if request.method == 'GET':
         try:
-            path_id = int(path_id)
-            entry = Entry.objects.get(path=path_id)
+            path_id = str(path_id)
+            entry_id = path_id[-2:]
+            path_id = int(path_id[:-2])
+            print(entry_id, path_id)
+            entry = Entry.objects.get(entry_id=entry_id, path=path_id)
             return redirect(entry.link)
         except Entry.DoesNotExist:
             return JsonResponse({
@@ -40,7 +43,7 @@ def post(request):
             return JsonResponse({
                 'status_code': 200,
                 'saved': "already exists",
-                'url': "http://127.0.0.1:8000/urls/"+entry.path
+                'url': "http://127.0.0.1:8000/urls/"+entry.path+str(entry.entry_id)
             })
         except Entry.DoesNotExist:
             entry = Entry.objects.create(link=link)
@@ -48,5 +51,5 @@ def post(request):
             return JsonResponse({
                 'status_code': 200,
                 'saved': "true",
-                'url': "http://127.0.0.1:8000/urls/"+entry.path
+                'url': "http://127.0.0.1:8000/urls/"+entry.path+str(entry.entry_id)
             })

@@ -4,7 +4,7 @@ import random
 
 
 def random_path():
-    return str(random.randint(100, 500))
+    return ''.join(random.sample('0123456789', 5))
 
 
 class Entry(models.Model):
