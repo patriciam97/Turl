@@ -28,6 +28,16 @@
         <a href="{{ short }}" class="stretched-link">{{ short }}</a>
       </h6>
     </div>
+    <div *ngIf="invalid != null" class="mb-3">
+      <h6 class="card-text">
+        The above link is invalid. Try again.
+      </h6>
+    </div>
+    <div *ngIf="empty != null" class="mb-3">
+      <h6 class="card-text">
+        Enter a link and try again.
+      </h6>
+    </div>
     <a class="btn btn-primary" (click)="convert()">Convert</a>
   </div>
 </div>
