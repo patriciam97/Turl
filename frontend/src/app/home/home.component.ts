@@ -10,8 +10,14 @@ export class HomeComponent implements OnInit {
   constructor(private databaseService: DatabaseService) {}
   faGlobeEurope = faGlobeEurope;
   link: string = '';
+  short: string = null;
   ngOnInit(): void {}
+
   convert(): void {
-    console.log(this.databaseService.convert(this.link));
+    this.databaseService.convert(this.link).subscribe((res) => {
+      if (res['saved']) {
+        this.short = res['url'];
+      }
+    });
   }
 }

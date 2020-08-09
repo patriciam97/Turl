@@ -15,14 +15,14 @@ export class DatabaseService {
     }),
   };
   constructor(private httpClient: HttpClient) {}
-  convert(longLink): void {
+  convert(longLink): Observable<Object> {
     let body = {
       link: longLink,
     };
-    this.httpClient
-      .post(this.baseUrl + '/urls/', body, this.httpOptions)
-      .subscribe((res: {}) => {
-        console.log(res);
-      });
+    return this.httpClient.post(
+      this.baseUrl + '/urls/',
+      body,
+      this.httpOptions
+    );
   }
 }

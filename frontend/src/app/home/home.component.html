@@ -4,8 +4,8 @@
       Sick of having to deal with long links?
     </h5>
     <p class="card-text">
-      Enter your long url below and click "Convert" to convert it into a shorter
-      one that you can easily share with other people.
+      Enter your long link below and click "Convert" to convert it into a
+      shorter one that you can easily share with other people.
     </p>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
@@ -21,6 +21,12 @@
         [value]="link"
         (input)="link = $event.target.value"
       />
+    </div>
+    <div *ngIf="short != null" class="mb-3">
+      <h6 class="card-text">
+        Your personal short link is:
+        <a href="{{ short }}" class="stretched-link">{{ short }}</a>
+      </h6>
     </div>
     <a class="btn btn-primary" (click)="convert()">Convert</a>
   </div>
