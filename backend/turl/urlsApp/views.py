@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import redirect
+import datetime
 import json
 from .models import Entry
 
@@ -30,10 +31,10 @@ def get(request, path_id):
                 'status_code': 404,
                 'error': 'The resource was not found'
             })
-        except:
+        except err:
             return JsonResponse({
                 'status_code': 505,
-                'error': 'Internal Server Error'
+                'error': 'Internal Server Error'+err
             })
     # elif request.method == 'POST':
     #     return JsonResponse({
@@ -55,6 +56,8 @@ def post(request):
             link = "http://www."+link[7:]
         try:
             entry = Entry.objects.get(link=link)
+            Entry.objects.filter(link=link).update(
+                updated=datetime.datetime.now())
             return JsonResponse({
                 'status_code': 200,
                 'saved': "already exists",
