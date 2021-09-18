@@ -2,7 +2,7 @@
 
 My version of TinyURL 🤫
 
-Created with [Angular 10.0](https://angular.io) and [Django 3.1](https://www.djangoproject.com).
+Created with [Angular 12.0](https://angular.io), [Django 3.1](https://www.djangoproject.com). and NPM 7.5.6
 
 To run:
 
